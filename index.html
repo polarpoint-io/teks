@@ -1,0 +1,747 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Website and documentation for tEKS project">
+      
+      
+        <link rel="canonical" href="https://clusterfrak-dynamics.github.io/teks/">
+      
+      
+        <meta name="author" content="ArchiFleKs">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>tEKS</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#teks" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://clusterfrak-dynamics.github.io/teks/" title="tEKS" aria-label="tEKS" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">dashboard</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              tEKS
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Overview
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/clusterfrak-dynamics/teks/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    clusterfrak-dynamics/teks
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="." class="md-tabs__link md-tabs__link--active">
+        Overview
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="user-guides/getting-started/" class="md-tabs__link">
+          Documentation
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://clusterfrak-dynamics.github.io/teks/" title="tEKS" class="md-nav__button md-logo">
+      
+        <i class="md-icon">dashboard</i>
+      
+    </a>
+    tEKS
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/clusterfrak-dynamics/teks/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    clusterfrak-dynamics/teks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Overview
+      </label>
+    
+    <a href="." title="Overview" class="md-nav__link md-nav__link--active">
+      Overview
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-purposes" class="md-nav__link">
+    Main purposes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-get" class="md-nav__link">
+    What you get
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curated-features" class="md-nav__link">
+    Curated Features
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enforced-security" class="md-nav__link">
+    Enforced security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-of-the-box-monitoring" class="md-nav__link">
+    Out of the box monitoring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-v3-provider" class="md-nav__link">
+    Helm v3 provider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-and-not-limited-to" class="md-nav__link">
+    Other and not limited to
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-infrastructure-blocks" class="md-nav__link">
+    Additional infrastructure blocks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branches" class="md-nav__link">
+    Branches
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Documentation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Documentation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="user-guides/getting-started/" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="user-guides/vpc/" title="VPC" class="md-nav__link">
+      VPC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="user-guides/eks/" title="EKS" class="md-nav__link">
+      EKS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="user-guides/eks-addons/" title="EKS Addons" class="md-nav__link">
+      EKS Addons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="user-guides/eks-namespaces/" title="EKS Namespaces" class="md-nav__link">
+      EKS Namespaces
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="user-guides/ecr/" title="ECR" class="md-nav__link">
+      ECR
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-purposes" class="md-nav__link">
+    Main purposes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-get" class="md-nav__link">
+    What you get
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curated-features" class="md-nav__link">
+    Curated Features
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enforced-security" class="md-nav__link">
+    Enforced security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-of-the-box-monitoring" class="md-nav__link">
+    Out of the box monitoring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-v3-provider" class="md-nav__link">
+    Helm v3 provider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-and-not-limited-to" class="md-nav__link">
+    Other and not limited to
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-infrastructure-blocks" class="md-nav__link">
+    Additional infrastructure blocks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branches" class="md-nav__link">
+    Branches
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/clusterfrak-dynamics/teks/edit/master/docs/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="teks">tEKS<a class="headerlink" href="#teks" title="Permanent link">&para;</a></h1>
+<p><a href="https://travis-ci.com/clusterfrak-dynamics/teks"><img alt="Build Status" src="https://travis-ci.com/clusterfrak-dynamics/teks.svg?branch=master" /></a>
+<a href="https://github.com/semantic-release/semantic-release"><img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" /></a>
+<a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fclusterfrak-dynamics%2Fteks?ref=badge_shield"><img alt="FOSSA Status" src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fclusterfrak-dynamics%2Fteks.svg?type=shield" /></a></p>
+<p>tEKS is a set of Terraform / Terragrunt modules designed to get you everything you need to run a production EKS cluster on AWS. It ships with sensible defaults, and add a lot of common addons with their configurations that work out of the box.</p>
+<p><img alt="⚠️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/26a0.svg" title=":warning:" /> the v5 and further version of this project have been completely revamp and now offer a skeleton to use as a base for your infrastructure projects around EKS. All the modules have been moved outside this repository and get their own versioning. The <a href="https://github.com/clusterfrak-dynamics/teks/tree/release-4.X">old README is accessible here</a></p>
+<h2 id="main-purposes">Main purposes<a class="headerlink" href="#main-purposes" title="Permanent link">&para;</a></h2>
+<p>The main goal of this project is to glue together commonly used tooling with Kubernetes/EKS and to get from an AWS Account to a production cluster with everything you need without any manual configuration.</p>
+<h2 id="what-you-get">What you get<a class="headerlink" href="#what-you-get" title="Permanent link">&para;</a></h2>
+<p>A production cluster all defined in IaaC with Terraform/Terragrunt:</p>
+<ul>
+<li>AWS VPC if needed based on <a href="https://github.com/terraform-aws-modules/terraform-aws-vpc"><code class="codehilite"><span class="err">terraform-aws-vpc</span></code></a></li>
+<li>EKS cluster base on <a href="https://github.com/terraform-aws-modules/terraform-aws-eks"><code class="codehilite"><span class="err">terraform-aws-eks</span></code></a></li>
+<li>Kubernetes addons based on <a href="https://github.com/clusterfrak-dynamics/terraform-kubernetes-addons"><code class="codehilite"><span class="err">terraform-kubernetes-addons</span></code></a>: provides various addons that are often used on Kubernetes and specifically on EKS.</li>
+<li>Kubernetes namespaces quota management based on <a href="https://github.com/clusterfrak-dynamics/terraform-kubernetes-addons"><code class="codehilite"><span class="err">terraform-kubernetes-namespaces</span></code></a>: allows administrator to manage namespaces and quotas from a centralized configuration with Terraform.</li>
+<li>AWS ECR registries management based on <a href="https://github.com/clusterfrak-dynamics/terraform-aws-ecr"><code class="codehilite"><span class="err">terraform-aws-ecr</span></code></a></li>
+</ul>
+<p>Everything is tied together with Terragrunt and allows you to deploy a multi cluster architecture in a matter of minutes (ok maybe an hour) and different AWS accounts for different environments.</p>
+<h2 id="curated-features">Curated Features<a class="headerlink" href="#curated-features" title="Permanent link">&para;</a></h2>
+<p>The main additionals features are the curated addons list, see <a href="https://github.com/clusterfrak-dynamics/terraform-kubernetes-addons">here</a> and in the customization of the cluster policy</p>
+<h3 id="enforced-security">Enforced security<a class="headerlink" href="#enforced-security" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Default PSP is removed and sensible defaults are enforced</li>
+<li>All addons have specific PSP enabled</li>
+<li>No IAM credentials on instances, everything is enforced with <a href="https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/">IRSA</a> or <a href="https://github.com/uswitch/kiam">KIAM</a></li>
+<li>Each addons is deployed in it's own namespace with sensible default network policies</li>
+</ul>
+<h3 id="out-of-the-box-monitoring">Out of the box monitoring<a class="headerlink" href="#out-of-the-box-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Prometheus Operator with defaults dashboards</li>
+<li>Addons that support metrics are enable along with their <code class="codehilite"><span class="err">serviceMonitor</span></code></li>
+<li>Custom grafana dashboard are available by default.</li>
+</ul>
+<h3 id="helm-v3-provider">Helm v3 provider<a class="headerlink" href="#helm-v3-provider" title="Permanent link">&para;</a></h3>
+<ul>
+<li>All addons support Helm v3 configuration</li>
+<li>All charts are easily customizable</li>
+</ul>
+<h3 id="other-and-not-limited-to">Other and not limited to<a class="headerlink" href="#other-and-not-limited-to" title="Permanent link">&para;</a></h3>
+<ul>
+<li>priorityClasses for addons</li>
+<li>use of [<code class="codehilite"><span class="err">kubectl-provider</span></code>], no more local exec and custom manifest are properly handled</li>
+<li>lot of manual stuff have been automated under the hood</li>
+</ul>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<p>Terragrunt is not a hard requirement but all the modules are tested with Terragrunt.</p>
+<ul>
+<li><a href="https://www.terraform.io/intro/getting-started/install.html">Terraform</a></li>
+<li><a href="https://github.com/gruntwork-io/terragrunt#install-terragrunt">Terragrunt</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a></li>
+<li><a href="https://helm.sh/">helm</a></li>
+<li><a href="https://github.com/kubernetes-sigs/aws-iam-authenticator">aws-iam-authenticator</a></li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p><a href="terraform/live"><code class="codehilite"><span class="err">terraform/live</span></code></a> folder provides an opinionated directory structure for a production environment with an example using</p>
+<h2 id="additional-infrastructure-blocks">Additional infrastructure blocks<a class="headerlink" href="#additional-infrastructure-blocks" title="Permanent link">&para;</a></h2>
+<p>If you wish to extend your infrastructure you can pick up additional modules on the <a href="https://github.com/clusterfrak-dynamics">clusterfrak-dynamics github page</a></p>
+<h2 id="branches">Branches<a class="headerlink" href="#branches" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/clusterfrak-dynamics/teks/tree/master"><code class="codehilite"><span class="err">master</span></code></a>: Backward incompatible with v1.X but compatible with v2.X, releases bumped to v3.X because a lot has changed.</li>
+<li><a href="https://github.com/clusterfrak-dynamics/teks/tree/release-1.X"><code class="codehilite"><span class="err">release-1.X</span></code></a>: Compatible with Terraform &lt; 0.12 and Terragrunt &lt; 0.19. Be sure to target the same modules version.</li>
+<li><a href="https://github.com/clusterfrak-dynamics/teks/tree/release-2.X"><code class="codehilite"><span class="err">release-2.X</span></code></a>: Compatible with Terraform &gt;= 0.12 and Terragrunt &gt;= 0.19. Be sure to target the same modules version.</li>
+</ul>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p><a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fclusterfrak-dynamics%2Fteks?ref=badge_large"><img alt="FOSSA Status" src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fclusterfrak-dynamics%2Fteks.svg?type=large" /></a></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+        
+          <a href="user-guides/getting-started/" title="Getting started" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Getting started
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.1",url:{base:"."}})</script>
+      
+    
+  </body>
+</html>
