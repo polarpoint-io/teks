@@ -151,8 +151,7 @@ prometheus:
     retention: 72h   # we only need a few hours of retention, since the rest is uploaded to blob
     image:
       tag: v2.17.1    # use a specific version of Prometheus
-    serviceMonitorNamespaceSelector:  # allows the operator to find target config from multiple namespaces
-      any: true
+    serviceMonitorNamespaceSelector : {}  # allows the operator to find target config from multiple namespaces
     storageSpec:
       volumeClaimTemplate:
         spec:
