@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "github.com/polarpoint-io/terraform-kubernetes-addons.git?ref=v5.1.0"
+  source = "github.com/polarpoint-io/terraform-kubernetes-addons.git?ref=v5.3.1"
 
   before_hook "init" {
     commands = ["init"]
@@ -101,7 +101,11 @@ EXTRA_VALUES
     default_network_policy         = true
     acme_email                     = "surj@polarpoint.io"
     enable_default_cluster_issuers = true
+    installCRDs                    = true
     allowed_cidrs                  = dependency.vpc.outputs.private_subnets_cidr_blocks
+    extra_values              = <<EXTRA_VALUES
+installCRDs: true
+EXTRA_VALUES
   }
 
   kiam = {
@@ -148,7 +152,6 @@ EXTRA_VALUES
     enabled                = true
     default_network_policy = true
     allowed_cidrs          = dependency.vpc.outputs.private_subnets_cidr_blocks
-
     extra_values = <<EXTRA_VALUES
 prometheus:
   prometheusSpec:
