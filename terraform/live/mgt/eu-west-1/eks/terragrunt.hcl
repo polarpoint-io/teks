@@ -108,9 +108,9 @@ inputs = {
     {
       name                 = "default-${local.aws_region}b"
       instance_type        = "t3.medium"
-      asg_min_size         = 0
+      asg_min_size         = 1
       asg_max_size         = 3
-      asg_desired_capacity = 0
+      asg_desired_capacity = 1
       subnets              = [dependency.vpc.outputs.private_subnets[1]]
       autoscaling_enabled  = true
       root_volume_size     = 50
@@ -125,9 +125,9 @@ inputs = {
     {
       name                 = "default-${local.aws_region}c"
       instance_type        = "t3.medium"
-      asg_min_size         = 0
+      asg_min_size         = 1
       asg_max_size         = 3
-      asg_desired_capacity = 0
+      asg_desired_capacity = 1
       subnets              = [dependency.vpc.outputs.private_subnets[2]]
       autoscaling_enabled  = true
       root_volume_size     = 50

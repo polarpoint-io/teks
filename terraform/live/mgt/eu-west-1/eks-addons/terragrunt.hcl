@@ -132,7 +132,7 @@ EXTRA_VALUES
     create_iam_resources_irsa = true
     version                   = "1.19.0"
     chart_version             = "1.3.0"
-    enabled                   = true
+    enabled                   = false
     default_network_policy    = true
 
     extra_values = <<EXTRA_VALUES
@@ -149,8 +149,9 @@ EXTRA_VALUES
   prometheus_operator = {
     repository = "https://kubernetes-charts.storage.googleapis.com"
     chart_version          = "8.12.9"
-    enabled                = true
+    enabled                = false
     default_network_policy = true
+    enable_prometheus_thanos_storage = false
     allowed_cidrs          = dependency.vpc.outputs.private_subnets_cidr_blocks
     extra_values = <<EXTRA_VALUES
 prometheus:
@@ -207,6 +208,28 @@ EXTRA_VALUES
     containers_log_retention_in_days = 180
   }
 
+  jenkins_operator = {
+    chart_version          = "1.7.1"
+    version                = "v0.8.1"
+    enabled                = true
+    default_network_policy = true
+  }
+
+  spinnaker = {
+    chart_version          = "1.7.1"
+    version                = "v0.8.1"
+    enabled                = true
+    default_network_policy = true
+  }
+
+  argocd = {
+    chart_version          = "1.7.1"
+    version                = "v0.8.1"
+    enabled                = true
+    default_network_policy = true
+  }
+ 
+
   npd = {
     chart_version          = "1.7.1"
     version                = "v0.8.1"
@@ -217,7 +240,7 @@ EXTRA_VALUES
   sealed_secrets = {
     chart_version          = "1.8.0"
     version                = "v0.10.0"
-    enabled                = true
+    enabled                = false
     default_network_policy = true
   }
 
@@ -245,19 +268,23 @@ EXTRA_VALUES
   }
 
   karma = {
-    chart_version          = "1.4.1"
+    chart_version          = "1.5.1"
     version                = "v0.60"
     enabled                = false
     default_network_policy = true
     extra_values           = <<EXTRA_VALUES
 ingress:
-  enabled: false
+  enabled: true
   path: /
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: "letsencrypt"
   hosts:
     - alerting.polarpoint.eu
+  tls:
+    - secretName: alerting-polarpoint-eu
+      hosts:
+        - alerting.polarpoint.eu    
 env:
   - name: ALERTMANAGER_URI
     value: "http://prometheus-operator-alertmanager.monitoring.svc.cluster.local:9093"
@@ -268,4 +295,3 @@ env:
 EXTRA_VALUES
   }
 }
-
