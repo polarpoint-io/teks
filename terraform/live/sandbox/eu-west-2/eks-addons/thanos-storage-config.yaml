@@ -1,0 +1,8 @@
+---
+type: s3
+config:
+  bucket: pol-tf-thanos-store-mgt-eu-west-1
+  endpoint: thanos-mgt-s3-polarpoint-eu
+  access_key: AWS_ACCESS_KEY_ID
+  secret_key: AWS_SECRET_ACCESS_KEY
+
