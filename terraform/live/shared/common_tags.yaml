@@ -10,7 +10,7 @@ application: hih
 data-priority: internal
 data-compliance:
 notification: operations
-maintenance-window: operations
+maintenance-window: 0 2-4 * * 7
 backups: no
-backup-retention: 0 2-4 * * 7
+backup-retention: no
 notification: surj@polarpoint.io
