@@ -1,4 +1,16 @@
 ---
-owner: Surj
-email: surj@polarpoint.o
-env: shared
+owner: operations
+consumer: shared
+cost-center: 000001
+wbs: a00001
+environment: shared-services
+function: continuous-integration
+os: amazon-linux
+application: hih
+data-priority: internal
+data-compliance:
+notification: operations
+maintenance-window: operations
+backups: no
+backup-retention: 0 2-4 * * 7
+notification: surj@polarpoint.io
