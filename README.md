@@ -1,5 +1,6 @@
 # terragrunt-aws-all-infra
 
+![terragrunt:env:shared](https://github.com/polarpoint-io/terragrunt-aws-all-infra/workflows/terragrunt:env:shared/badge.svg)
 
 A set of Terraform / Terragrunt modules designed to get you everything you need to run a Full Software Delivery service on AWS with sensible defaults and addons with their configurations that work out of the box.
 
