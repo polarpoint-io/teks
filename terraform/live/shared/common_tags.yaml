@@ -1,7 +1,7 @@
 ---
 owner: operations
 consumer: shared
-cost-center: 000001
+cost-center: 000002
 wbs: a00001
 environment: shared-services
 function: continuous-integration
