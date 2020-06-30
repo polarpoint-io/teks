@@ -68,8 +68,7 @@ inputs = {
   ]
 
   tags = merge(
-    local.custom_tags,
-    local.mandatory_tags
+    local.custom_tags
   )
 
   cluster_name                         = local.cluster_name
