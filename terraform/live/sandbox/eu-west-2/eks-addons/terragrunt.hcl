@@ -12,7 +12,7 @@ terraform {
 }
 
 locals {
-  env        = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["environment"]
+  env        = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
   aws_region = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
 }
 

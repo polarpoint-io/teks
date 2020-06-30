@@ -12,8 +12,8 @@ terraform {
 
 locals {
   aws_region     = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
-  env            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["environment"]
-  app            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["application"]
+  env            = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
+  app            = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["application"]
 }
 
 dependency "eks" {

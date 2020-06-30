@@ -32,7 +32,7 @@ The terraform directory structure is the following:
 .
 └── live
     └── demo
-        ├── common_tags.yaml
+        ├── mandatory_tags.yaml
         ├── common_values.yaml
         ├── eu-west-3
         │   ├── ecr

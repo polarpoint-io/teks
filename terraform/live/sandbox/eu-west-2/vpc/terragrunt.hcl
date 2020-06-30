@@ -8,9 +8,9 @@ terraform {
 
 locals {
   aws_region  = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
-  env = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["environment"]
+  env = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
   custom_tags = yamldecode(file("${find_in_parent_folders("custom_tags.yaml")}"))
-  app      = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["application"]
+  app      = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["application"]
 }
 
 inputs = {
