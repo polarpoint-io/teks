@@ -68,25 +68,26 @@ inputs = {
   ]
 
   tags = merge(
-    local.custom_tags
+    local.custom_tags,
+    local.mandatory_tags
   )
 
-  cluster_name     = local.cluster_name
-  subnets          = dependency.vpc.outputs.private_subnets
-  vpc_id           = dependency.vpc.outputs.vpc_id
-  write_kubeconfig = false
-  enable_irsa      = true
-
-  kubeconfig_aws_authenticator_additional_args = ["-r",
-  "arn:aws:iam::${local.aws_account_id}:role/admin", "--region", "${local.aws_region}"]
-
-
-
+  cluster_name                         = local.cluster_name
+  subnets                              = dependency.vpc.outputs.private_subnets
+  vpc_id                               = dependency.vpc.outputs.vpc_id
+  write_kubeconfig                     = true
+  enable_irsa                          = true
+  kubeconfig_aws_authenticator_command = "aws"
+  kubeconfig_aws_authenticator_command_args = [
+    "eks",
+    "get-token",
+    "--cluster-name",
+    local.cluster_name
+  ]
+  kubeconfig_aws_authenticator_additional_args = []
 
   cluster_version           = "1.16"
   cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
-
-  manage_worker_autoscaling_policy = false
 
   worker_groups_launch_template = [
     {
@@ -113,10 +114,7 @@ inputs = {
           key                 = "k8s.io/cluster-autoscaler/${local.cluster_name}"
           propagate_at_launch = "false"
           value               = "true"
-        },
-        local.custom_tags
-        ,
-        local.mandatory_tags
+        }
       ]
     },
     {
@@ -143,10 +141,7 @@ inputs = {
           key                 = "k8s.io/cluster-autoscaler/${local.cluster_name}"
           propagate_at_launch = "false"
           value               = "true"
-        },
-        local.custom_tags
-        ,
-        local.mandatory_tags
+        }
       ]
     },
     {
@@ -173,10 +168,7 @@ inputs = {
           key                 = "k8s.io/cluster-autoscaler/${local.cluster_name}"
           propagate_at_launch = "false"
           value               = "true"
-        },
-        local.custom_tags
-        ,
-        local.mandatory_tags
+        }
       ]
     },
   ]
