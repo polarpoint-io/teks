@@ -39,8 +39,8 @@ locals {
   env            = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
   app            = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["application"]
   aws_account_id = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_account_id"]
-  custom_tags = yamldecode(file("${find_in_parent_folders("custom_tags.yaml")}"))
-  mandatory_tags    = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))
+  custom_tags    = yamldecode(file("${find_in_parent_folders("custom_tags.yaml")}"))
+  mandatory_tags = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))
   cluster_name   = "${local.app}-${local.env}-eks"
 }
 
@@ -77,8 +77,8 @@ inputs = {
   write_kubeconfig = false
   enable_irsa      = true
 
-  kubeconfig_aws_authenticator_additional_args = [ "-r",                                                                            
-    "arn:aws:iam::${local.aws_account_id}:role/admin","--region", "${local.aws_region}"]
+  kubeconfig_aws_authenticator_additional_args = ["-r",
+  "arn:aws:iam::${local.aws_account_id}:role/admin", "--region", "${local.aws_region}"]
 
 
 
@@ -117,14 +117,14 @@ inputs = {
       root_volume_size     = 50
       tags = merge(
         {
-          "CLUSTER_ID" = "${local.cluster_name}"
+          "CLUSTER_ID"          = "${local.cluster_name}"
           "propagate_at_launch" = "true"
         },
         local.custom_tags
         ,
         local.mandatory_tags
       )
-      
+
     },
     {
       name                 = "default-${local.aws_region}c"
@@ -137,7 +137,7 @@ inputs = {
       root_volume_size     = 50
       tags = merge(
         {
-          "CLUSTER_ID" = "${local.cluster_name}"
+          "CLUSTER_ID"          = "${local.cluster_name}"
           "propagate_at_launch" = "true"
         },
         local.custom_tags
