@@ -21,7 +21,7 @@ inputs = {
 
   tags = merge(
     {
-      "kubernetes.io/cluster/${local.app}-${local.environment}-eks" = "shared"
+      "kubernetes.io/cluster/${local.app}-${local.env}-eks" = "shared"
     },
     local.custom_tags
   )
