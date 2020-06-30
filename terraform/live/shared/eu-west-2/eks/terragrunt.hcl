@@ -104,6 +104,19 @@ inputs = {
           value               = local.cluster_name
           propagate_at_launch = true
         },
+        {
+          key                 = "k8s.io/cluster-autoscaler/enabled"
+          propagate_at_launch = "false"
+          value               = "true"
+        },
+        {
+          key                 = "k8s.io/cluster-autoscaler/${local.cluster_name}"
+          propagate_at_launch = "false"
+          value               = "true"
+        },
+        local.custom_tags
+        ,
+        local.mandatory_tags
       ]
     },
     {
