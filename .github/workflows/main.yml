@@ -57,7 +57,7 @@ jobs:
 
     - name: 'terragrunt:apply:vpc'
       run: terragrunt apply -auto-approve
-      working-directory: terraform/live/shared/eu-west-3/vpc
+      working-directory: terraform/live/shared/eu-west-2/vpc
 
     - name: 'terragrunt:init:eks'
       run: terragrunt init
