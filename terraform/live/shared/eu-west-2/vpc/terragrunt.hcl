@@ -8,7 +8,7 @@ terraform {
 
 locals {
   aws_region  = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
-  env         = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["env"]
+  environment = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["environment"]
   custom_tags = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))
   prefix      = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["prefix"]
 }
@@ -21,12 +21,12 @@ inputs = {
 
   tags = merge(
     {
-      "kubernetes.io/cluster/eks-${local.prefix}-${local.env}" = "shared"
+      "kubernetes.io/cluster/eks-${local.prefix}-${local.environment}" = "shared"
     },
     local.custom_tags
   )
 
-  name = "vpc-eks-${local.env}"
+  name = "vpc-eks-${local.environment}"
 
   cidr = "10.0.0.0/16"
 
