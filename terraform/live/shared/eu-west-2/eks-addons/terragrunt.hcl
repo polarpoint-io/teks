@@ -7,7 +7,7 @@ terraform {
 
   before_hook "init" {
     commands = ["init"]
-    execute  = ["bash", "-c", "wget -O terraform-provider-kubectl https://github.com/gavinbunney/terraform-provider-kubectl/releases/download/v1.4.2/terraform-provider-kubectl-darwin-amd64 && chmod +x terraform-provider-kubectl"]
+    execute  = ["bash", "-c", "wget -O terraform-provider-kubectl https://github.com/gavinbunney/terraform-provider-kubectl/releases/download/v1.4.2/terraform-provider-kubectl-linux-amd64 && chmod +x terraform-provider-kubectl"]
   }
 }
 

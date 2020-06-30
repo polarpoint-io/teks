@@ -3,11 +3,11 @@ include {
 }
 
 terraform {
-  source = "github.com/terraform-aws-modules/terraform-aws-eks?ref=v12.0.0"
+  source = "github.com/terraform-aws-modules/terraform-aws-eks?ref=v12.1.0"
 
   before_hook "init" {
     commands = ["init"]
-    execute  = ["bash", "-c", "wget -O terraform-provider-kubectl https://github.com/gavinbunney/terraform-provider-kubectl/releases/download/v1.4.2/terraform-provider-kubectl-darwin-amd64 && chmod +x terraform-provider-kubectl"]
+    execute  = ["bash", "-c", "wget -O terraform-provider-kubectl https://github.com/gavinbunney/terraform-provider-kubectl/releases/download/v1.4.2/terraform-provider-kubectl-linux-amd64 && chmod +x terraform-provider-kubectl"]
   }
 
   after_hook "kubeconfig" {
