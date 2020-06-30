@@ -11,6 +11,7 @@ locals {
   env = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
   custom_tags = yamldecode(file("${find_in_parent_folders("custom_tags.yaml")}"))
   app      = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["application"]
+  mandatory_tags = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))
 }
 
 inputs = {
@@ -24,6 +25,8 @@ inputs = {
       "kubernetes.io/cluster/${local.app}-${local.env}-eks" = "shared"
     },
     local.custom_tags
+    ,
+    local.mandatory_tags
   )
 
   name = "${local.env}-vpc-eks"
@@ -42,13 +45,23 @@ inputs = {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  public_subnet_tags = {
-    "kubernetes.io/cluster/eks-${local.app}-${local.env}" = "shared"
-    "kubernetes.io/role/elb"                                 = "1"
-  }
+  public_subnet_tags = merge(
+    {
+      "kubernetes.io/cluster/eks-${local.app}-${local.env}" = "shared"
+      "kubernetes.io/role/elb"                                 = "1"
+    },
+    local.custom_tags
+    ,
+    local.mandatory_tags
+  )
 
-  private_subnet_tags = {
+    private_subnet_tags = merge(
+    {
     "kubernetes.io/cluster/${local.app}-${local.env}-eks" = "shared"
     "kubernetes.io/role/internal-elb"                        = "1"
-  }
+    },
+    local.custom_tags
+    ,
+    local.mandatory_tags
+  )
 }
