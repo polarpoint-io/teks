@@ -3,7 +3,7 @@ owner: operations
 consumer: shared
 cost-center: 000002
 wbs: a00001
-environment: shared-services
+environment: shared
 function: continuous-integration
 os: amazon-linux
 application: hih

@@ -5,7 +5,7 @@ remote_state {
     key            = "${path_relative_to_include()}"
     region         = "${yamldecode(file("common_tags.yaml"))["aws_region"]}"
     encrypt        = true
-    dynamodb_table = "${yamldecode(file("common_values.yaml"))["prefix"]}-tf-state-store-lock-${yamldecode(file("common_tags.yaml"))["environment"]}-${yamldecode(file("common_values.yaml"))["aws_region"]}"
+    dynamodb_table = "${yamldecode(file("common_values.yaml"))["application"]}-tf-state-store-lock-${yamldecode(file("common_tags.yaml"))["environment"]}-${yamldecode(file("common_values.yaml"))["aws_region"]}"
   }
 }
 

@@ -36,11 +36,11 @@ terraform {
 
 locals {
   aws_region     = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
-  env            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["env"]
+  env            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["environment"]
+  app            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["app"]
   aws_account_id = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_account_id"]
   custom_tags    = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))
-  prefix         = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["prefix"]
-  cluster_name   = "eks-${local.prefix}-${local.env}"
+  cluster_name   = "${local.app}-${local.env}-eks"
 }
 
 dependency "vpc" {

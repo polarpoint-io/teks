@@ -40,7 +40,7 @@ locals {
   app            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["app"]
   aws_account_id = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_account_id"]
   custom_tags    = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))
-  cluster_name   = "${local.prefix}-${local.env}-eks"
+  cluster_name   = "${local.app}-${local.env}-eks"
 }
 
 dependency "vpc" {

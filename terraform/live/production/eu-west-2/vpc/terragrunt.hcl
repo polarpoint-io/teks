@@ -8,9 +8,9 @@ terraform {
 
 locals {
   aws_region  = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
-  env         = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["env"]
-  custom_tags = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))
-  prefix      = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["prefix"]
+  env = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["environment"]
+  custom_tags = yamldecode(file("${find_in_parent_folders("custom_tags.yaml")}"))
+  app      = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["application"]
 }
 
 inputs = {
@@ -21,12 +21,12 @@ inputs = {
 
   tags = merge(
     {
-      "kubernetes.io/cluster/eks-${local.prefix}-${local.env}" = "shared"
+      "kubernetes.io/cluster/eks-${local.app}-${local.environment}" = "shared"
     },
     local.custom_tags
   )
 
-  name = "vpc-eks-${local.env}"
+  name = "${local.env}-vpc-eks"
 
   cidr = "10.0.0.0/16"
 
@@ -43,12 +43,12 @@ inputs = {
   enable_dns_support   = true
 
   public_subnet_tags = {
-    "kubernetes.io/cluster/eks-${local.prefix}-${local.env}" = "shared"
+    "kubernetes.io/cluster/eks-${local.application}-${local.env}" = "shared"
     "kubernetes.io/role/elb"                                 = "1"
   }
 
   private_subnet_tags = {
-    "kubernetes.io/cluster/eks-${local.prefix}-${local.env}" = "shared"
+    "kubernetes.io/cluster/${local.app}-${local.env}-eks" = "shared"
     "kubernetes.io/role/internal-elb"                        = "1"
   }
 }

@@ -12,7 +12,8 @@ terraform {
 
 locals {
   aws_region     = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
-  env            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["env"]
+  env            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["environment"]
+  app            = yamldecode(file("${find_in_parent_folders("common_tags.yaml")}"))["application"]
 }
 
 dependency "eks" {
@@ -44,7 +45,7 @@ inputs = {
   //
   namespaces = [
     {
-      "name"                       = "pol-${local.env}"
+      "name"                       = "${local.app}-${local.env}"
       "kiam_allowed_regexp"        = "^$"
       "requests.cpu"               = "50"
       "requests.memory"            = "10Gi"
