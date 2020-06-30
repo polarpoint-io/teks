@@ -43,7 +43,7 @@ inputs = {
   enable_dns_support   = true
 
   public_subnet_tags = {
-    "kubernetes.io/cluster/eks-${local.application}-${local.env}" = "shared"
+    "kubernetes.io/cluster/eks-${local.app}-${local.env}" = "shared"
     "kubernetes.io/role/elb"                                 = "1"
   }
 
