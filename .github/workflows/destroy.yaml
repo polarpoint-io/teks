@@ -3,7 +3,7 @@ name: terragrunt shared environment
 on:
   push:
     branches:
-    - destroy/*
+    - destroy
     paths:
     - 'terraform/live/shared/**'
   pull_request:
