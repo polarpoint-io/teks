@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: octokit/request-action@v2.0.0
       with:
-        route: GET /repos/:repository/collaborators/${{ github.actor }}
+        route: GET /repos/:route/collaborators/${{ github.actor }}
         repository: ${{ github.repository }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
