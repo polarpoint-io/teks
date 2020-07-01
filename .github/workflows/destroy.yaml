@@ -3,9 +3,66 @@ on:
     types: [destroy]
 name: destroy
 jobs:
-  test:
-    name: destroy
+  terraform:
+    name: 'terragrunt clean up'
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "I just ran all your tests!"
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: 'asdf:install'
+      uses: asdf-vm/actions/install@v1.0.0
+
+    - name: 'terraform:provider:kubectl'
+      run: |
+        mkdir -p ~/.terraform.d/plugins
+        curl -Ls https://api.github.com/repos/gavinbunney/terraform-provider-kubectl/releases/latest | jq -r ".assets[] | select(.browser_download_url | contains(\"$(uname -s | tr A-Z a-z)\")) | select(.browser_download_url | contains(\"amd64\")) | .browser_download_url" | xargs -n 1 curl -Lo ~/.terraform.d/plugins/terraform-provider-kubectl
+        chmod +x ~/.terraform.d/plugins/terraform-provider-kubectl
+
+    - name: 'terraform:setup'
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_wrapper: false
+
+
+    - name: 'aws:credentials'
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+
+    - name: 'terragrunt:init:vpc'
+      run: terragrunt init
+      working-directory: terraform/live/shared/eu-west-2/vpc
+
+
+    - name: 'terragrunt:init:eks'
+      run: terragrunt init
+      working-directory: terraform/live/shared/eu-west-2/eks
+
+
+    - name: 'terragrunt:init:eks-addons'
+      run: terragrunt init
+      working-directory: terraform/live/shared/eu-west-2/eks-addons
+
+
+    - name: 'terragrunt:destroy:eks-addons'
+      run: terragrunt destroy -auto-approve
+      working-directory: terraform/live/shared/eu-west-2/eks-addons
+      continue-on-error: true
+
+    - name: 'terragrunt:destroy:eks-addons:cleanup-stale-state'
+      run: terragrunt state list 2>/dev/null | xargs terragrunt state rm
+      working-directory: terraform/live/shared/eu-west-2/eks-addons
+      continue-on-error: true
+
+    - name: 'terragrunt:destroy:eks'
+      run: terragrunt destroy -auto-approve
+      working-directory: terraform/live/shared/eu-west-2/eks
+      continue-on-error: true
+
+    - name: 'terragrunt:destroy:vpc'
+      run: terragrunt destroy -auto-approve
+      working-directory: terraform/live/shared/eu-west-2/vpc
+      continue-on-error: true
