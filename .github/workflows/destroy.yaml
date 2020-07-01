@@ -4,12 +4,28 @@ on:
     types: [started]
 
 jobs:
-  terraform:
-    name: terragrunt clean up
+  authorise: 
     runs-on: ubuntu-latest
 
-    if: github.actor == github.event.repository.owner.login
     steps:
+    - uses: octokit/request-action@v2.0.0
+      with:
+        route: GET /repos/:repository/collaborators/${{ github.actor }}
+        repository: ${{ github.repository }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+  terraform:
+    needs: [authorise]
+    name: terragrunt clean up
+    runs-on: ubuntu-latest
+    steps:
+    - uses: octokit/request-action@v2.0.0
+      with:
+        route: GET /repos/:repository/collaborators/${{ github.actor }}
+        repository: ${{ github.repository }}
+           
     - name: checkout
       uses: actions/checkout@v2
 
