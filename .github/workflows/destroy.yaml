@@ -1,22 +1,16 @@
+name: terragrunt shared environment
 
 on:
-  watch:
-    types: [started]
+  push:
+    branches:
+    - destroy/*
+    paths:
+    - 'terraform/live/shared/**'
+  pull_request:
 
 jobs:
-  authorise: 
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: octokit/request-action@v2.0.0
-      with:
-        route: GET /repos/:repository/collaborators/${{ github.actor }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   terraform:
-    needs: [authorise]
-    name: terragrunt clean up
+    name: terragrunt shared environment
     runs-on: ubuntu-latest
     steps:      
     - name: checkout
