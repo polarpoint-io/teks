@@ -1,4 +1,4 @@
-name: 'terragrunt:env:shared'
+name: terragrunt shared environment
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   terraform:
-    name: 'terragrunt:env:shared'
+    name: terragrunt shared environment
     runs-on: ubuntu-latest
     steps:
     - name: checkout
