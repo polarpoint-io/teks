@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "github.com/polarpoint-io/terraform-kubernetes-addons.git?ref=v5.3.1"
+  source = "github.com/polarpoint-io/terraform-kubernetes-addons.git?ref=v5.3.2"
 
   before_hook "init" {
     commands = ["init"]
