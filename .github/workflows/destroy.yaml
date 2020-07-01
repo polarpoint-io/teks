@@ -7,13 +7,6 @@ jobs:
   authorise: 
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: octokit/request-action@v2.0.0
-      with:
-        route: GET /repos/:repository/collaborators/${{ github.actor }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN}}
-
   terraform:
     needs: [authorise]
     name: terragrunt clean up
@@ -23,7 +16,8 @@ jobs:
       with:
         route: GET /repos/:repository/collaborators/${{ github.actor }}
         repository: ${{ github.repository }}
-           
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN}}          
     - name: checkout
       uses: actions/checkout@v2
 
