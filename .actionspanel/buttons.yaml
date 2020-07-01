@@ -1,0 +1,4 @@
+buttons:
+  - title: destroy
+    action: "run_destroy"
+    description: clean up
