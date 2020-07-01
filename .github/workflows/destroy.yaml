@@ -4,13 +4,11 @@ on:
     types: [started]
 
 jobs:
-  build:
+  terraform:
+    name: terragrunt clean up
     runs-on: ubuntu-latest
 
     if: github.actor == github.event.repository.owner.login
-  terraform:
-    name: 'terragrunt clean up'
-    runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v2
