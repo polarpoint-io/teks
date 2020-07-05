@@ -15,6 +15,11 @@ terraform {
     execute  = ["bash", "-c", "terraform output kubeconfig 2>/dev/null > ${get_terragrunt_dir()}/kubeconfig"]
   }
 
+  after_hook "kubeconfig-tg" {
+    commands = ["apply"]
+    execute  = ["bash", "-c", "terraform output kubeconfig 2>/dev/null > kubeconfig"]
+  }
+
   after_hook "kube-system-label" {
     commands = ["apply"]
     execute  = ["bash", "-c", "kubectl --kubeconfig ${get_terragrunt_dir()}/kubeconfig label ns kube-system name=kube-system --overwrite"]
@@ -64,18 +69,22 @@ inputs = {
   }
 
   psp_privileged_ns = [
-    "istio-system"
+    "istio-system",
+    "istio-operator",
+    "monitoring",
+    "aws-alb-ingress-controller",
+    "aws-for-fluent-bit"
   ]
 
   tags = merge(
     local.custom_tags
   )
 
-  cluster_name                         = local.cluster_name
-  subnets                              = dependency.vpc.outputs.private_subnets
-  vpc_id                               = dependency.vpc.outputs.vpc_id
-  write_kubeconfig                     = true
-  enable_irsa                          = true
+  cluster_name     = local.cluster_name
+  subnets          = dependency.vpc.outputs.private_subnets
+  vpc_id           = dependency.vpc.outputs.vpc_id
+  write_kubeconfig = false
+  enable_irsa      = true
   kubeconfig_aws_authenticator_command = "aws"
   kubeconfig_aws_authenticator_command_args = [
     "eks",
@@ -84,6 +93,10 @@ inputs = {
     local.cluster_name
   ]
   kubeconfig_aws_authenticator_additional_args = []
+ # kubeconfig_aws_authenticator_additional_args = ["-r",
+ # "arn:aws:iam::${local.aws_account_id}:role/admin", "--region", "${local.aws_region}"]
+
+ # use t3.xlarge 
 
   cluster_version           = "1.16"
   cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]

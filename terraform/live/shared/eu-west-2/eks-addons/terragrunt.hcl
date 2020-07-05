@@ -7,21 +7,19 @@ terraform {
 
   before_hook "init" {
     commands = ["init"]
-    execute  = ["bash", "-c", "wget -O terraform-provider-kubectl https://github.com/gavinbunney/terraform-provider-kubectl/releases/download/v1.4.2/terraform-provider-kubectl-linux-amd64 && chmod +x terraform-provider-kubectl"]
+    execute  = ["bash", "-c", "wget -O terraform-provider-kubectl https://github.com/gavinbunney/terraform-provider-kubectl/releases/download/v1.5.0/terraform-provider-kubectl-darwin-amd64 && chmod +x terraform-provider-kubectl"]
   }
 }
 
 locals {
   env        = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
   aws_region = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
+  default_domain_name = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["default_domain_name"]
 }
 
 dependency "eks" {
   config_path = "../eks"
 
-   # Configure mock outputs for the `validate` and `plan` commands that are returned when there are no outputs available (e.g the
-   # module hasn't been applied yet.
-  #mock_outputs_allowed_terraform_commands = ["validate", "plan"]
   mock_outputs = {
     cluster_id              = "cluster-name"
     cluster_oidc_issuer_url = "https://oidc.eks.eu-west-3.amazonaws.com/id/0000000000000000"
@@ -183,11 +181,11 @@ grafana:
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: "letsencrypt"
     hosts:
-      - dashboard.polarpoint.eu
+      - dashboard.${local.default_domain_name}
     tls:
-      - secretName: dashboard-polarpoint-eu
+      - secretName: dashboard.${local.default_domain_name}
         hosts:
-          - dashboard.polarpoint.eu
+          - dashboard.${local.default_domain_name}
   persistence:
     enabled: true
     storageClassName: gp2
@@ -280,11 +278,11 @@ ingress:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: "letsencrypt"
   hosts:
-    - alerting.polarpoint.eu
+    - alert.${local.default_domain_name}
   tls:
-    - secretName: alerting-polarpoint-eu
+    - secretName: alert.${local.default_domain_name}
       hosts:
-        - alerting.polarpoint.eu    
+        - alert.${local.default_domain_name}    
 env:
   - name: ALERTMANAGER_URI
     value: "http://prometheus-operator-alertmanager.monitoring.svc.cluster.local:9093"
