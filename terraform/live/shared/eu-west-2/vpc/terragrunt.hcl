@@ -63,5 +63,4 @@ inputs = {
     ,
     local.mandatory_tags
     )
-  }
 }
