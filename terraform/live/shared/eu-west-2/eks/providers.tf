@@ -37,7 +37,7 @@ data "aws_region" "current" {}
 data "aws_availability_zones" "available" {}
 
 data "aws_eks_cluster" "cluster" {
-  name = var.cluster-name 
+  name = var.cluster-name
 }
 
 data "aws_eks_cluster_auth" "cluster" {
