@@ -176,7 +176,7 @@ inputs = {
           key                 = "k8s.io/cluster-autoscaler/${local.cluster_name}"
           propagate_at_launch = "false"
           value               = "true"
-        },
+        }
       ]
     },
   ]
