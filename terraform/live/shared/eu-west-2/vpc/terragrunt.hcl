@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v2.33.0"
+  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v2.38.0"
 }
 
 locals {
@@ -49,19 +49,19 @@ inputs = {
     {
       "kubernetes.io/cluster/eks-${local.app}-${local.env}" = "shared"
       "kubernetes.io/role/elb"                                 = "1"
-    },
-    local.custom_tags
-    ,
-    local.mandatory_tags
+    }
   )
 
     private_subnet_tags = merge(
     {
     "kubernetes.io/cluster/${local.app}-${local.env}-eks" = "shared"
     "kubernetes.io/role/internal-elb"                        = "1"
-    },
+    }
+  )
+    tags = merge(
     local.custom_tags
     ,
     local.mandatory_tags
-  )
+    )
+  }
 }
