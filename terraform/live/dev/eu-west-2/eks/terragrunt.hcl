@@ -7,7 +7,7 @@ terraform {
 
   before_hook "init" {
     commands = ["init"]
-    execute  = ["bash", "-c", "wget -O terraform-provider-kubectl https://github.com/gavinbunney/terraform-provider-kubectl/releases/download/v1.4.2/terraform-provider-kubectl-darwin-amd64 && chmod +x terraform-provider-kubectl"]
+    execute  = ["bash", "-c", "curl -Ls https://api.github.com/repos/gavinbunney/terraform-provider-kubectl/releases/latest | jq -r ".assets[] | select(.browser_download_url | contains(\"$(uname -s | tr A-Z a-z)\")) | select(.browser_download_url | contains(\"amd64\")) | .browser_download_url" | xargs -n 1 curl -Lo ~/.terraform.d/plugins/terraform-provider-kubectl terraform-provider-kubectl && chmod +x terraform-provider-kubectl"]
   }
 
   after_hook "kubeconfig" {
