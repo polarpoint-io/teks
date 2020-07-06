@@ -93,10 +93,6 @@ inputs = {
     local.cluster_name
   ]
   kubeconfig_aws_authenticator_additional_args = []
- # kubeconfig_aws_authenticator_additional_args = ["-r",
- # "arn:aws:iam::${local.aws_account_id}:role/admin", "--region", "${local.aws_region}"]
-
- # use t3.xlarge 
 
   cluster_version           = "1.16"
   cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
