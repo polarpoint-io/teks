@@ -7,7 +7,7 @@ terraform {
 
   before_hook "init" {
     commands = ["init"]
-    execute  = ["bash", "-c", "curl -Ls https://api.github.com/repos/gavinbunney/terraform-provider-kubectl/releases/latest | grep 'browser_download_url' | grep -i $(uname) | cut -d : -f 2,3 | xargs -n 1 curl -Lo terraform-provider-kubectl  && chmod +x terraform-provider-kubectl"]
+    execute  = ["bash", "-c", "curl -Ls https://api.github.com/repos/gavinbunney/terraform-provider-kubectl/releases/latest | grep 'browser_download_url' | grep -i $(uname) | grep "64"| cut -d : -f 2,3 | xargs -n 1 curl -Lo terraform-provider-kubectl  && chmod +x terraform-provider-kubectl"]
   }
 
   after_hook "kubeconfig" {
