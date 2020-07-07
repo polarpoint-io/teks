@@ -4,8 +4,8 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.aws["region"]
-  version = "2.63.0"
+  region  = "eu-west-2"
+  version = "2.52.0"
 }
 
 provider "kubectl" {
@@ -20,7 +20,10 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.cluster.token
   load_config_file       = false
+  version                = "1.11.1"
 }
+
+
 
 provider "helm" {
   version = "~> 1.0"
@@ -37,11 +40,11 @@ data "aws_region" "current" {}
 data "aws_availability_zones" "available" {}
 
 data "aws_eks_cluster" "cluster" {
-  name = aws_eks_cluster.*.id
+  name = data.aws_eks_cluster.cluster.id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = aws_eks_cluster.*.id
+  name = data.aws_eks_cluster.cluster.id
 }
 
 variable "aws" {

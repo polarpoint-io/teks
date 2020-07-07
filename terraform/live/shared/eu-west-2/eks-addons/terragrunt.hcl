@@ -14,6 +14,11 @@ terraform {
 locals {
   env        = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
   aws_region = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
+  app            = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["application"]
+  aws_account_id = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_account_id"]
+  custom_tags    = yamldecode(file("${find_in_parent_folders("custom_tags.yaml")}"))
+  mandatory_tags = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))
+  cluster_name   = "${local.app}-${local.env}-eks"
   default_domain_name = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["default_domain_name"]
 }
 
@@ -46,6 +51,7 @@ inputs = {
   }
 
   eks = {
+    "cluster_id" = dependency.eks.outputs.cluster_id
     "cluster_oidc_issuer_url" = dependency.eks.outputs.cluster_oidc_issuer_url
   }
 

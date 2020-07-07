@@ -32,7 +32,7 @@ inputs = {
   }
 
   eks = {
-    "cluster_name" = dependency.eks.outputs.cluster_id
+    "cluster_id" = dependency.eks.outputs.cluster_id
   }
 
   //

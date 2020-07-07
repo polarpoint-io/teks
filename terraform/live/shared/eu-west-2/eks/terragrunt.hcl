@@ -68,6 +68,7 @@ inputs = {
     "region" = local.aws_region
   }
 
+
   psp_privileged_ns = [
     "istio-system",
     "istio-operator",
