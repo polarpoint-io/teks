@@ -1,6 +1,6 @@
 provider "aws" {
   region  = var.aws["region"]
-  version = "2.63.0"
+  version = "~> 2.41"
 }
 
 terraform {

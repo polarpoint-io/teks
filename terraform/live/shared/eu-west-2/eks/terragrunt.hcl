@@ -7,7 +7,7 @@ terraform {
 
   before_hook "init" {
     commands = ["init"]
-    execute  = ["bash", "-c", "curl -Ls https://api.github.com/repos/gavinbunney/terraform-provider-kubectl/releases/latest | grep 'browser_download_url' | grep -i $(uname) | grep '64'| cut -d : -f 2,3 | xargs -n 1 curl -Lo terraform-provider-kubectl  && chmod +x terraform-provider-kubectl"]
+    execute  = ["bash", "-c", "curl -Ls https://api.github.com/repos/gavinbunney/terraform-provider-kubectl/releases/tags/v1.4.2 | grep 'browser_download_url' | grep -i $(uname) | grep '64'| cut -d : -f 2,3 | xargs -n 1 curl -Lo terraform-provider-kubectl  && chmod +x terraform-provider-kubectl"]
   }
 
   after_hook "kubeconfig" {
@@ -78,13 +78,14 @@ inputs = {
   ]
 
   tags = merge(
-    local.custom_tags
+    local.custom_tags,
+    local.mandatory_tags
   )
 
   cluster_name                         = local.cluster_name
   subnets                              = dependency.vpc.outputs.private_subnets
   vpc_id                               = dependency.vpc.outputs.vpc_id
-  write_kubeconfig                     = false
+  write_kubeconfig                     = true
   enable_irsa                          = true
   kubeconfig_aws_authenticator_command = "aws"
   kubeconfig_aws_authenticator_command_args = [
