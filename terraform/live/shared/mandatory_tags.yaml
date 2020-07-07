@@ -6,7 +6,7 @@ wbs: a00001
 environment: shared
 function: continuous-integration
 os: amazon-linux
-application: hih
+application: ops
 data-classification: internal
 data-compliance: no
 maintenance-window: 0 2-4 * * 7
