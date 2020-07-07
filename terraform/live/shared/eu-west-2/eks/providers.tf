@@ -27,11 +27,11 @@ data "aws_region" "current" {}
 data "aws_availability_zones" "available" {}
 
 data "aws_eks_cluster" "cluster" {
-  name = data.aws_eks_cluster.cluster.id
+  name = aws_eks_cluster.this[0].id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = data.aws_eks_cluster.cluster.id
+  name = aws_eks_cluster.this[0].id
 }
 
 variable "aws" {
