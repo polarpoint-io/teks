@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "github.com/polarpoint-io/terraform-kubernetes-addons.git?ref=v5.3.2"
+  source = "github.com/polarpoint-io/terraform-kubernetes-addons.git?ref=v5.3.3"
 
   before_hook "init" {
     commands = ["init"]
@@ -51,7 +51,6 @@ inputs = {
   }
 
   eks = {
-    "cluster_id" = dependency.eks.outputs.cluster_id
     "cluster_oidc_issuer_url" = dependency.eks.outputs.cluster_oidc_issuer_url
   }
 
