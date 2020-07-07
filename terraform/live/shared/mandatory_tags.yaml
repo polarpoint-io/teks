@@ -9,7 +9,7 @@ os: amazon-linux
 application: ops
 data-classification: internal
 data-compliance: no
-maintenance-window: 0 2-4 * * 7
+maintenance-window: "0 2-4 * * 7"
 backups: no
 backup-retention: no
 notification: operations
