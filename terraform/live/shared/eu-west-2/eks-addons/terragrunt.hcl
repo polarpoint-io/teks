@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "github.com/polarpoint-io/terraform-kubernetes-addons.git?ref=v5.3.3"
+  source = "github.com/polarpoint-io/terraform-kubernetes-addons.git?ref=v5.3.4"
 
   before_hook "init" {
     commands = ["init"]
@@ -152,9 +152,11 @@ EXTRA_VALUES
   prometheus_operator = {
     repository = "https://kubernetes-charts.storage.googleapis.com"
     chart_version          = "8.12.9"
-    enabled                = false
+    enabled                = true
     default_network_policy = true
-    enable_prometheus_thanos_storage = false
+    enable_prometheus_thanos_storage = true
+    env                   = locals.env
+    app                   = locals.app
     allowed_cidrs          = dependency.vpc.outputs.private_subnets_cidr_blocks
     extra_values = <<EXTRA_VALUES
 prometheus:
@@ -162,7 +164,7 @@ prometheus:
     replicas: 2      # work in High-Availability mode
     retention: 72h   # we only need a few hours of retention, since the rest is uploaded to blob
     image:
-      tag: v2.17.1    # use a specific version of Prometheus
+      tag: v2.19.0    # use a specific version of Prometheus
     serviceMonitorNamespaceSelector : {}  # allows the operator to find target config from multiple namespaces
     storageSpec:
       volumeClaimTemplate:
@@ -173,7 +175,7 @@ prometheus:
             requests:
               storage: 50Gi      
     thanos:         # add Thanos Sidecar
-      tag: v0.8.0   # a specific version of Thanos
+      tag: v0.8.1   # a specific version of Thanos
       objectStorageConfig: # blob storage configuration to upload metrics 
         key: thanos.yaml
         name: thanos-storage-config
@@ -214,21 +216,21 @@ EXTRA_VALUES
   jenkins_operator = {
     chart_version          = "1.7.1"
     version                = "v0.8.1"
-    enabled                = true
+    enabled                = false
     default_network_policy = true
   }
 
   spinnaker = {
     chart_version          = "1.7.1"
     version                = "v0.8.1"
-    enabled                = true
+    enabled                = false
     default_network_policy = true
   }
 
   argocd = {
     chart_version          = "1.7.1"
     version                = "v0.8.1"
-    enabled                = true
+    enabled                = false
     default_network_policy = true
   }
  
