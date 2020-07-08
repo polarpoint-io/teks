@@ -155,8 +155,8 @@ EXTRA_VALUES
     enabled                = true
     default_network_policy = true
     enable_prometheus_thanos_storage = true
-    env                   = locals.env
-    app                   = locals.app
+    env                   = local.env
+    app                   = local.app
     allowed_cidrs          = dependency.vpc.outputs.private_subnets_cidr_blocks
     extra_values = <<EXTRA_VALUES
 prometheus:
