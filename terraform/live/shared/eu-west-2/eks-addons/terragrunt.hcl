@@ -54,6 +54,15 @@ inputs = {
     "cluster_oidc_issuer_url" = dependency.eks.outputs.cluster_oidc_issuer_url
   }
 
+  external_secrets = {
+    chart_version          = "4.1.0"
+    version                = "4.1.0"
+    enabled                = true
+    default_network_policy = true
+  }
+
+
+
   nginx_ingress = {
     version                = "0.30.0"
     chart_version          = "1.35.0"
