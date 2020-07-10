@@ -55,8 +55,8 @@ inputs = {
   }
 
   external_secrets = {
-    chart_version          = "4.1.0"
-    version                = "4.1.0"
+    chart_version          = "4.0.0"
+    version                = "4.0.0"
     enabled                = true
     default_network_policy = true
   }
@@ -66,7 +66,7 @@ inputs = {
   nginx_ingress = {
     version                = "0.30.0"
     chart_version          = "1.35.0"
-    enabled                = true
+    enabled                = false
     default_network_policy = true
     ingress_cidr           = "0.0.0.0/0"
     use_nlb                = false
