@@ -7,18 +7,18 @@ terraform {
 
   before_hook "init" {
     commands = ["init"]
-     execute  = ["bash", "-c", "curl -Ls https://api.github.com/repos/gavinbunney/terraform-provider-kubectl/releases/tags/v1.4.2 | grep 'browser_download_url' | grep -i $(uname) | grep '64'| cut -d : -f 2,3 | xargs -n 1 curl -Lo terraform-provider-kubectl  && chmod +x terraform-provider-kubectl"]
+    execute  = ["bash", "-c", "curl -Ls https://api.github.com/repos/gavinbunney/terraform-provider-kubectl/releases/tags/v1.4.2 | grep 'browser_download_url' | grep -i $(uname) | grep '64'| cut -d : -f 2,3 | xargs -n 1 curl -Lo terraform-provider-kubectl  && chmod +x terraform-provider-kubectl"]
   }
 }
 
 locals {
-  env        = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
-  aws_region = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
-  app            = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["application"]
-  aws_account_id = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_account_id"]
-  custom_tags    = yamldecode(file("${find_in_parent_folders("custom_tags.yaml")}"))
-  mandatory_tags = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))
-  cluster_name   = "${local.app}-${local.env}-eks"
+  env                 = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["environment"]
+  aws_region          = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_region"]
+  app                 = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))["application"]
+  aws_account_id      = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["aws_account_id"]
+  custom_tags         = yamldecode(file("${find_in_parent_folders("custom_tags.yaml")}"))
+  mandatory_tags      = yamldecode(file("${find_in_parent_folders("mandatory_tags.yaml")}"))
+  cluster_name        = "${local.app}-${local.env}-eks"
   default_domain_name = yamldecode(file("${find_in_parent_folders("common_values.yaml")}"))["default_domain_name"]
 }
 
@@ -55,18 +55,19 @@ inputs = {
   }
 
   external_secrets = {
-     chart_version = ""
-      version       = ""
     enabled                = true
+    chart_version          = "4.1.0"
+    version                = "4.1.0"
     default_network_policy = true
+    skip_crds              = true
   }
 
 
 
   nginx_ingress = {
+    enabled                = false
     version                = "0.30.0"
     chart_version          = "1.35.0"
-    enabled                = false
     default_network_policy = true
     ingress_cidr           = "0.0.0.0/0"
     use_nlb                = false
@@ -78,12 +79,12 @@ inputs = {
   }
 
   cluster_autoscaler = {
+    enabled                   = true
     create_iam_resources_kiam = false
     create_iam_resources_irsa = true
     iam_policy_override       = ""
     version                   = "v1.15.6"
     chart_version             = "7.2.0"
-    enabled                   = true
     default_network_policy    = true
     cluster_name              = dependency.eks.outputs.cluster_id
     extra_values              = <<EXTRA_VALUES
@@ -93,29 +94,28 @@ EXTRA_VALUES
   }
 
   external_dns = {
+    enabled                   = true
     create_iam_resources_kiam = false
     create_iam_resources_irsa = true
     iam_policy_override       = ""
     version                   = "0.7.1-debian-10-r2"
     chart_version             = "2.20.10"
-    enabled                   = true
     default_network_policy    = true
   }
 
   cert_manager = {
-    repository = "https://charts.jetstack.io"
+    enabled                        = true
     create_iam_resources_kiam      = false
     create_iam_resources_irsa      = true
     iam_policy_override            = ""
     version                        = "v0.15.0"
     chart_version                  = "v0.15.0"
-    enabled                        = true
     default_network_policy         = true
     acme_email                     = "surj@polarpoint.io"
     enable_default_cluster_issuers = true
     installCRDs                    = true
     allowed_cidrs                  = dependency.vpc.outputs.private_subnets_cidr_blocks
-    extra_values              = <<EXTRA_VALUES
+    extra_values                   = <<EXTRA_VALUES
 installCRDs: true
 EXTRA_VALUES
   }
@@ -159,15 +159,15 @@ EXTRA_VALUES
   }
 
   prometheus_operator = {
-    repository = "https://kubernetes-charts.storage.googleapis.com"
-    chart_version          = "8.12.9"
-    enabled                = true
-    default_network_policy = true
+    repository                       = "https://kubernetes-charts.storage.googleapis.com"
+    chart_version                    = "8.12.9"
+    enabled                          = true
+    default_network_policy           = true
     enable_prometheus_thanos_storage = true
-    env                   = local.env
-    app                   = local.app
-    allowed_cidrs          = dependency.vpc.outputs.private_subnets_cidr_blocks
-    extra_values = <<EXTRA_VALUES
+    env                              = local.env
+    app                              = local.app
+    allowed_cidrs                    = dependency.vpc.outputs.private_subnets_cidr_blocks
+    extra_values                     = <<EXTRA_VALUES
 prometheus:
   prometheusSpec:
     replicas: 2      # work in High-Availability mode
@@ -242,7 +242,7 @@ EXTRA_VALUES
     enabled                = false
     default_network_policy = true
   }
- 
+
 
   npd = {
     chart_version          = "1.7.1"
