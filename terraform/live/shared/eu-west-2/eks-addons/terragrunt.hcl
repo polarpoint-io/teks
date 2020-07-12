@@ -54,6 +54,17 @@ inputs = {
     "cluster_oidc_issuer_url" = dependency.eks.outputs.cluster_oidc_issuer_url
   }
 
+
+
+  argocd = {
+    enabled                = true
+    chart_version          = "2.5.3"
+    version                = "v1.6.1"
+    default_network_policy = true
+    skip_crds              = false
+  }
+
+
   external_secrets = {
     enabled                = false
     chart_version          = "4.2.0"
