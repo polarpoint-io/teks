@@ -55,7 +55,7 @@ inputs = {
   }
 
   external_secrets = {
-    enabled                = true
+    enabled                = false
     chart_version          = "4.2.0"
     version                = "4.2.0"
     default_network_policy = true
@@ -237,9 +237,9 @@ EXTRA_VALUES
   }
 
   argocd = {
-    chart_version          = "1.7.1"
-    version                = "v0.8.1"
-    enabled                = false
+    chart_version          = "2.5.3"
+    version                = "v1.6.1"
+    enabled                = true
     default_network_policy = true
   }
 
