@@ -96,7 +96,7 @@ inputs = {
   ]
   kubeconfig_aws_authenticator_additional_args = []
 
-  cluster_version           = "1.17"
+  cluster_version           = "1.16"
   cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   worker_groups_launch_template = [
