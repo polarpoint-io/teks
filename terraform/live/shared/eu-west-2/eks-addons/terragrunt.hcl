@@ -132,12 +132,12 @@ EXTRA_VALUES
   }
 
   kiam = {
+    enabled                     = true    
     create_iam_user             = true
     create_iam_resources        = true
     assume_role_policy_override = ""
     version                     = "v3.5"
     chart_version               = "5.7.0"
-    enabled                     = false
     default_network_policy      = false
     iam_user                    = ""
   }
