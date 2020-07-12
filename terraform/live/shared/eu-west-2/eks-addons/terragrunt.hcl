@@ -55,7 +55,7 @@ inputs = {
   }
 
   external_secrets = {
-     chart_version = "4.1.0"
+     chart_version = "v4.1.0"
       version       = "v4.1.0"
     enabled                = true
     default_network_policy = true
