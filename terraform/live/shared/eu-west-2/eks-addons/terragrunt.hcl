@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "github.com/polarpoint-io/terraform-helm-shared.git?ref=v0.2.0"
+  source = "github.com/polarpoint-io/terraform-helm-shared.git?ref=v0.2.1"
 
   before_hook "init" {
     commands = ["init"]
