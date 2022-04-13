@@ -6,7 +6,6 @@ A set of Terraform / Terragrunt modules designed to get you everything you need 
 
 ![Alt text](https://github.com/polarpoint-io/terragrunt-aws-all-infra/blob/master/docs/images/architecture.png)
 
-
 ## Main purposes
 
 The main goal of this project is to glue together commonly used tooling with Kubernetes/EKS and to get from an AWS Account to a production cluster with everything you need without any manual configuration.
